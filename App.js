@@ -1,5 +1,6 @@
 
 import React,{useState} from 'react';
+import axios from 'axios';
 
 import {
    Text,
@@ -12,35 +13,24 @@ import {
 
 
 const App= () => {
-  const [name, setName]= useState("");
-  const [Passward, setPassword]= useState("");
+
+ 
+
+  const data = ()=>{
+
+    axios.post("https://primeflix-api-server-efn5w.ondigitalocean.app/plan/",{
+      country_ref_id: 101
+    }).then((response) => alert(JSON.stringify(response.data))
+    ).catch((error) => alert(error.message))
+
+  } 
   
   
   return (
     <View>
-     
-      <TextInput style={Styles.input} placeholder='Enter your Email' onChangeText={(input) => setName(input)} />
-      <TextInput style={Styles.input} placeholder='Enter your Passward' onChangeText={(input) => setPassword(input)}
-         secureTextEntry={true} ></TextInput>
-         {/* <Button title='Login'
-          onPress={() => {
-           if(name == "Raghav" & Passward=="abcd"){
-             alert("Login Successfully")
-           }
-            else{
-             alert("name or Password is not correct")
-           }
-          
-          }}>
-        </Button> */}
+               
         <TouchableOpacity onPress={() => {
-           if(name == "Raghav" & Passward=="abcd"){
-             alert("Login Successfully")
-           }
-            else{
-             alert("name or Password is not correct")
-           }
-          
+                       data()
           }} >
           <Text style={{fontSize:30, marginTop:30 , justifyContent:"center", textAlign:"center"}}>Click Here</Text>
         </TouchableOpacity>
